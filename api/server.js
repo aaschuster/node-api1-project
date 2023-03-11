@@ -50,9 +50,7 @@ server.post("/api/users", async (req, res) => {
             })
         } else {
             const newUser = await User.insert(req.body);
-            res.status(201).json( {
-                data: newUser
-            })
+            res.status(201).json(newUser)
         }
     } catch (err) {
         res.status(500).json( {
@@ -77,9 +75,7 @@ server.put("/api/users/:id", async (req, res) => {
                     message: "The user with the specified ID does not exist"
                 })
             } else {
-                res.status(200).json( {
-                    data: updatedUser
-                })
+                res.status(200).json(updatedUser)
             }
         }
     } catch (err) {
@@ -98,10 +94,7 @@ server.delete("/api/users/:id", async (req, res) => {
                 message: "The user with the specified ID does not exist"
             })
         } else {
-            res.json({
-                message: "User deleted",
-                data: deletedUser
-            })
+            res.json(deletedUser)
         }
     } catch (err) {
         res.status(500).json( {
